@@ -12,6 +12,8 @@ on:
       - 'k8s/**'
       - 'README.md'
 
+workflow_dispatch:
+
 jobs:
 
   build:
