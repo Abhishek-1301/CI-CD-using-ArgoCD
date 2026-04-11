@@ -96,4 +96,5 @@ jobs:
         git config --global user.email "abhisheksetty119@gmail.com"
         git config --global user.name "Abhishek Bheemarasetty"
         git commit -am "Update tag in Helm chart"
+        git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/Abhishek-1301/CI-CD-using-ArgoCD.git
         git push
