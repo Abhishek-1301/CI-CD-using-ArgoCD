@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: go-web-app.local
+  - host: abhishek.com
     http:
       paths: 
       - path: /
