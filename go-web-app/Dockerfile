@@ -18,7 +18,7 @@ RUN go mod download
 COPY . .
 
 # Build the application
-RUN go build -o main .
+RUN go build -o main ./go-web-app/
 
 #######################################################
 # Reduce the image size using multi-stage builds
