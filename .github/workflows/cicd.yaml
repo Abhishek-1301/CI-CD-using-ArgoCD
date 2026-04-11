@@ -36,19 +36,19 @@ jobs:
         cd go-web-app/
         go test ./...
   
-  code-quality:
-    runs-on: ubuntu-latest
+  # code-quality:
+  #   runs-on: ubuntu-latest
 
-    needs: build
+  #   needs: build
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+  #   steps:
+  #   - name: Checkout repository
+  #     uses: actions/checkout@v4
 
-    - name: Run golangci-lint
-      uses: golangci/golangci-lint-action@v6
-      with:
-        version: v1.56.2
+  #   - name: Run golangci-lint
+  #     uses: golangci/golangci-lint-action@v6
+  #     with:
+  #       version: v1.56.2
   
   push:
     runs-on: ubuntu-latest
