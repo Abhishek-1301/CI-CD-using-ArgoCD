@@ -28,7 +28,8 @@ jobs:
 
     - name: Build
       run: |
-        go mod init
+        cd go-web-app/
+        go mod init .
         go build -o go-web-app .
 
     - name: Test
