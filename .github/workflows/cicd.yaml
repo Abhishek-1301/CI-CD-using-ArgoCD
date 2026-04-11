@@ -29,7 +29,6 @@ jobs:
     - name: Build
       run: |
         cd go-web-app/
-        go mod init .
         go build -o go-web-app .
 
     - name: Test
