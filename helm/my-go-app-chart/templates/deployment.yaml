@@ -2,21 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-web-app
+  name: {{ .Values.app }}
   labels:
-    app: go-web-app
+    app: {{ .Values.app }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.deployment.replicas }}
   selector:
     matchLabels:
-      app: go-web-app
+      app: {{ .Values.app }}
   template:
     metadata:
       labels:
-        app: go-web-app
+        app: {{ .Values.app }}
     spec:
       containers:
-      - name: go-web-app
-        image: a571/go-web-app:{{ .Values.image.tag }}
+      - name: {{ .Values.app }}
+        image: {{ .Values.image.user }}/{{ .Values.image.name }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.deployment.port }}

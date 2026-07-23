@@ -2,18 +2,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: go-web-app
+  name: {{ .Values.app }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: abhishek.com
+  {{- range .Values.ingress.hosts }}
+  - host: {{ .host }}
     http:
-      paths: 
-      - path: /
-        pathType: Prefix
+      paths:
+      {{- range .paths }}
+      - path: {{ .path }}
+        pathType: {{ default "Prefix" .pathType }}
         backend:
           service:
-            name: go-web-app
+            name: {{ .backend.service.name }}
             port:
-              number: 80
+              number: {{ .backend.service.port.number }}
+      {{- end }}
+  {{- end }}
