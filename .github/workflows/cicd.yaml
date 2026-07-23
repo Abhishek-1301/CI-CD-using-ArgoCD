@@ -14,6 +14,9 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
 
   build:
@@ -22,6 +25,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set up Go 1.22
       uses: actions/setup-go@v2
@@ -60,6 +65,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
@@ -83,11 +90,14 @@ jobs:
 
     needs: push
 
+    permissions:
+      contents: write
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Update tag in Helm chart
       run: |
