@@ -9,7 +9,7 @@ image:
   name: go-web-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "24287411673"
+  tag: "30021779964"
 
 deployment:
   replicas: 1
